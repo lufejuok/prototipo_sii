@@ -403,9 +403,9 @@ function notice(pc, link){
 
 /* ---------- Navegación ---------- */
 const CRUMBS = {
-  home:[], projects:[['home','Inicio']], ficha:[['home','Inicio'],['projects','Proyectos de I+D']],
-  products:[['home','Inicio'],['projects','Proyectos de I+D'],['ficha','Participación comunitaria…']],
-  detail:[['home','Inicio'],['projects','Proyectos de I+D'],['ficha','Participación comunitaria…'],['products','Productos']],
+  home:[], projects:[['home','Inicio']], ficha:[['home','Inicio'],['projects','Proyectos de Investigación']],
+  products:[['home','Inicio'],['projects','Proyectos de Investigación'],['ficha','Participación comunitaria…']],
+  detail:[['home','Inicio'],['projects','Proyectos de Investigación'],['ficha','Participación comunitaria…'],['products','Productos']],
   module:[['home','Inicio']]
 };
 const BACKLBL = { home:'Inicio', projects:'Proyectos', ficha:'Ficha del proyecto', products:'Productos' };
@@ -448,7 +448,7 @@ const MODULES = [
   ['providers','Proveedores','Registro y evaluación de proveedores','truck'],
   ['allies','Entidades aliadas','Convenios y contactos institucionales','users'],
   ['calls','Oportunidades y convocatorias','Convocatorias abiertas y postulaciones','megaphone'],
-  ['projects','Proyectos de I+D','Fichas, productos y avances de investigación','flask'],
+  ['projects','Proyectos de Investigación','Fichas, productos y avances de investigación','flask'],
   ['training','Formación','Programas, cursos y participantes','book'],
   ['work','Laboral','Contratos, novedades y certificados','brief'],
   ['docs','Documentación institucional','Políticas, formatos y manuales','file']
@@ -476,8 +476,8 @@ const PROJECTS = () => [
 function vProjects(){
   const q = (S.params.q||'').toLowerCase();
   const rows = PROJECTS().filter(p => !q || p.name.toLowerCase().includes(q) || p.code.toLowerCase().includes(q));
-  return `${crumbs('Proyectos de I+D')}
-  <div class="page-head"><div><h1>Proyectos de I+D</h1><p class="sub">Proyectos en los que participas.</p></div></div>
+  return `${crumbs('Proyectos de Investigación')}
+  <div class="page-head"><div><h1>Proyectos de Investigación</h1><p class="sub">Proyectos en los que participas.</p></div></div>
   <div class="toolbar">
     <div class="search"><label for="qproj" class="sr">Buscar proyecto</label><div class="box">${ic('search')}<input id="qproj" type="search" placeholder="Buscar por nombre o código" value="${esc(S.params.q||'')}" autocomplete="off"></div></div>
     <button class="btn btn-secondary" data-act="export">${ic('download')}Exportar lista</button>
@@ -541,7 +541,7 @@ function vModule(){
   const m = MODULES.find(x => x[0] === S.params.mod) || MODULES[0];
   return `${crumbs(m[1])}<div class="page-head"><div><h1>${m[1]}</h1><p class="sub">${m[2]}</p></div></div>
   <div class="card placeholder">${ic(m[3])}<p style="margin-top:.75rem">Este módulo no hace parte del prototipo.</p>
-  <div class="row" style="justify-content:center;margin-top:1rem"><button class="btn btn-primary" data-mod="projects">Ir a Proyectos de I+D</button></div></div>`;
+  <div class="row" style="justify-content:center;margin-top:1rem"><button class="btn btn-primary" data-mod="projects">Ir a Proyectos de Investigación</button></div></div>`;
 }
 const canAdd = p => acum(p) < 100;
 function vProducts(){
@@ -687,11 +687,11 @@ window.addEventListener('offline', () => { const s = $('#as-status'); if (s) s.i
 function accessFlow(){
   if (S.access === 'pending'){
     modal({ tone:'info', icon:'clock', title:'Tu solicitud está en revisión',
-      body:`<p>Ya pediste acceso a <b>Proyectos de I+D</b>. Te avisaremos por correo electrónico y en las notificaciones cuando el administrador responda.</p>`,
+      body:`<p>Ya pediste acceso a <b>Proyectos de Investigación</b>. Te avisaremos por correo electrónico y en las notificaciones cuando el administrador responda.</p>`,
       actions:[{ label:'Entendido', kind:'primary' }] });
     return;
   }
-  modal({ tone:'warn', icon:'lock', title:'No tienes acceso a Proyectos de I+D',
+  modal({ tone:'warn', icon:'lock', title:'No tienes acceso a Proyectos de Investigación',
     body:`<p>Para consultar proyectos y registrar avances necesitas permiso sobre este módulo. Puedes pedirlo al administrador del sistema.</p>`,
     actions:[ { label:'Cancelar' }, { label:'Solicitar acceso', kind:'primary', onClick:() => {
       S.access = 'pending'; render();
@@ -701,9 +701,9 @@ function accessFlow(){
       clearTimeout(accessFlow.t);
       accessFlow.t = setTimeout(() => {
         if (S.access !== 'pending') return;
-        S.access = 'granted'; notify('Tu acceso a Proyectos de I+D fue aprobado.');
+        S.access = 'granted'; notify('Tu acceso a Proyectos de Investigación fue aprobado.');
         if (S.screen === 'home') render();
-        toast('Tu acceso a Proyectos de I+D fue aprobado.', { label:'Abrir', fn:() => go('projects') });
+        toast('Tu acceso a Proyectos de Investigación fue aprobado.', { label:'Abrir', fn:() => go('projects') });
       }, 6000);
       return true;
     } } ] });
