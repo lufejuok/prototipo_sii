@@ -1,4 +1,11 @@
-<title>Prototipo SII-CINDE v2</title>
+<!doctype html>
+<html lang="es" data-theme="light" style="color-scheme:light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Prototipo SII-CINDE</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Lexend:wght@400;500;600;700&display=swap">
@@ -334,10 +341,13 @@ html{ scroll-padding-top:84px; scroll-padding-bottom:84px; }
 .placeholder{ text-align:center; padding:2.5rem 1rem; color:var(--muted); }
 .placeholder svg.i{ width:40px; height:40px; color:var(--muted); }
 </style>
+<style>body{margin:0} img{max-width:100%} [hidden]{display:none!important}</style>
+</head>
+<body>
+
 
 <a class="skip" href="#app">Saltar al contenido</a>
 <header class="topbar" id="topbar"></header>
-<div id="offline" class="offline-strip" hidden role="status">Sin conexión. Puedes seguir consultando; los cambios se guardarán cuando vuelva la conexión.</div>
 <main id="app" tabindex="-1"></main>
 <nav class="bottombar" aria-label="Accesos rápidos"><div class="bb-inner" id="bottombar"></div></nav>
 <div class="toasts" id="toasts" aria-live="polite"></div>
@@ -394,7 +404,7 @@ let uid = 100; const nid = () => 'h' + (++uid);
 /* ---------- Estado ---------- */
 function seed(){
   return {
-    access:'none', userStatus:'online', online: navigator.onLine !== false,
+    access:'none', userStatus:'online', online: true,
     screen:'home', params:{}, mariaDone:false, lastAnnulled:null,
     notif:[ { id:'n1', text:'El corte de avances de octubre cierra el 17/10/2026.', time:'Hoy, 8:00', read:false } ],
     products:[
@@ -465,15 +475,14 @@ const ST = { online:['En línea','st-online'], away:['Ausente','st-away'], dnd:[
 function curStatus(){ return S.online ? ST[S.userStatus] : ['Sin conexión','st-offline']; }
 function renderTop(){
   const unread = S.notif.filter(n=>!n.read).length;
-  const [stTxt, stCls] = curStatus();
   $('#topbar').innerHTML = `
     <button class="tb-btn" data-act="drawer" aria-label="Abrir menú principal">${ic('menu')}<span class="lbl">Menú</span></button>
     <button class="tb-logo" data-go="home" aria-label="SII-CINDE, ir al inicio"><img src="${LOGO_W}" alt=""></button>
     <span class="tb-spacer"></span>
     <button class="tb-btn bell" data-act="notif" aria-label="Notificaciones${unread?`, ${unread} sin leer`:''}" aria-haspopup="true">${ic('bell')}${unread?`<span class="badge">${unread}</span>`:''}</button>
-    <button class="tb-btn user-btn" data-act="user" aria-haspopup="true" aria-label="${ME}, estado: ${stTxt}. Abrir menú de usuario">
-      <span class="avatar" aria-hidden="true">AG<span class="dot ${stCls}"></span></span>
-      <span class="user-meta" aria-hidden="true">${ME}<small>${stTxt}</small></span>
+    <button class="tb-btn user-btn" data-act="user" aria-haspopup="true" aria-label="${ME}. Abrir menú de usuario">
+      <span class="avatar" aria-hidden="true">AG</span>
+      <span class="user-meta" aria-hidden="true">${ME}</span>
     </button>`;
 }
 function renderBottom(){
@@ -483,7 +492,7 @@ function renderBottom(){
   const cur = s => S.screen===s ? 'aria-current="page"' : '';
   const inProj = ['projects','ficha','general','section','products','detail'].includes(S.screen);
   $('#bottombar').innerHTML = `
-    <div class="bb-status" role="status"><span class="dot ${stCls}" aria-hidden="true"></span><span><b>${stTxt}</b> · ${S.online ? `Sincronizado a las ${hh}:${mm}` : 'Cambios en espera'}</span></div>
+    <span></span>
     <div class="bb-tabs">
       <button class="tab" data-go="home" ${cur('home')}>${ic('home')}Inicio</button>
       <button class="tab" data-go="projects" ${inProj?'aria-current="page"':''}>${ic('flask')}Proyectos</button>
@@ -643,7 +652,6 @@ const VIEWS = { home:vHome, projects:vProjects, ficha:vFicha, general:vGeneral, 
 function render(){
   renderTop(); renderBottom();
   $('#app').innerHTML = (VIEWS[S.screen]||vHome)();
-  $('#offline').hidden = S.online;
 }
 
 /* ---------- Capa: modales, cajones, menús ---------- */
@@ -857,7 +865,7 @@ function corregir(hid){
 }
 
 /* ---------- Accesibilidad ---------- */
-const A_DEF = { scale:1, theme:'system', hc:false, dys:false, ul:false, rm:false, space:false };
+const A_DEF = { scale:1, theme:'light', hc:false, dys:false, ul:false, rm:false, space:false };
 let A = Object.assign({}, A_DEF);
 /* Panel de configuración de accesibilidad desactivado en esta versión */
 function applyA(){
@@ -892,7 +900,7 @@ function a11yPanel(){
 
 /* ---------- Notas de revisión y escenarios ---------- */
 const NOTES = {
-  home:['La pantalla de inicio ahora tiene el mismo menú superior que las demás.','Cada módulo tiene ícono y una línea que explica qué contiene.','Se quitó “Notificaciones” de la cuadrícula: ya está en la campana (no se duplican botones).','El estado de acceso se ve antes de entrar: “Sin acceso”, “Solicitud en revisión” o pendientes.','El estado del usuario (“En línea”) está junto al nombre y en la barra inferior.'],
+  home:['La pantalla de inicio ahora tiene el mismo menú superior que las demás.','Cada módulo tiene ícono y una línea que explica qué contiene.','Se quitó “Notificaciones” de la cuadrícula: ya está en la campana (no se duplican botones).','El estado de acceso se ve antes de entrar: “Sin acceso”, “Solicitud en revisión” o pendientes.'],
   projects:['Se eliminaron las filas vacías con botón “Ver”.','Toda la fila abre el proyecto: un botón menos por fila.','La búsqueda filtra mientras escribes; la lupa ya no es un botón aparte.','Estado con color + ícono + texto; avance con barra.','“Volver” y la ruta de navegación quedaron en una sola línea.','Las columnas quedan alineadas a la izquierda (antes había textos centrados y otros no).'],
   ficha:['Resumen arriba: periodo, estado, avance y rol.','Cada sección muestra su estado con ícono y texto.','Se quitó la paginación (no tenía función en esta pantalla).','Los títulos ya no van subrayados: el subrayado se reserva para enlaces.'],
   general:['Etiquetas y valores alineados en dos columnas.','El dato suelto “Pendiente” ahora tiene etiqueta (“Estado”).','El avance general coincide con la lista: antes decía 42 % en una pantalla y 74,2 % en otra.','Espaciado de letras normal; el espaciado amplio dificultaba la lectura.'],
@@ -943,8 +951,6 @@ function notifPop(){
 }
 function userPop(){
   pop(`<h2>${ME}</h2><p class="empty" style="padding-top:0">Investigador · andres.gomez</p><div class="pop-sep"></div>
-    <p class="eyebrow" style="padding:.4rem .6rem 0">Tu estado</p>
-    ${Object.entries(ST).map(([k,[t,c]])=>`<button class="pop-item" data-st="${k}" aria-pressed="${S.userStatus===k}"><span class="dot ${c}" style="margin-top:.45rem"></span><span><b>${t}</b>${S.userStatus===k?'<small>Estado actual</small>':''}</span></button>`).join('')}
     <div class="pop-sep"></div>
     <button class="pop-item" data-act="logout">${ic('logout')}<span>Cerrar sesión</span></button>`, 'Menú de usuario');
 }
@@ -970,7 +976,6 @@ document.addEventListener('click', e => {
   if (d.sec){ d.sec === 'general' ? go('general') : d.sec === 'products' ? go('products') : go('section', { sec:d.sec }); return; }
   if (d.prod){ go('detail', { id:d.prod }); return; }
   if (d.scen){ scenario(d.scen); return; }
-  if (d.st){ S.userStatus = d.st; closeLayer(); renderTop(); renderBottom(); toast(`Tu estado ahora es: ${ST[d.st][0]}.`); return; }
   switch (d.act){
     case 'drawer': navDrawer(); break;
     case 'notif': notifPop(); break;
@@ -988,10 +993,10 @@ document.addEventListener('input', e => {
   $('#app').innerHTML = VIEWS[S.screen]();
   const n = $('#'+id); if (n){ n.focus(); n.setSelectionRange(pos,pos); }
 });
-window.addEventListener('online', () => { S.online = true; render(); toast('Conexión restablecida.'); });
-window.addEventListener('offline', () => { S.online = false; renderTop(); renderBottom(); $('#offline').hidden = false; });
-setInterval(renderBottom, 60000);
 document.documentElement.lang = 'es';
 applyA(); render();
 })();
 </script>
+
+</body>
+</html>
