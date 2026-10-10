@@ -497,7 +497,6 @@ function renderBottom(){
       <button class="tab" data-go="home" ${cur('home')}>${ic('home')}Inicio</button>
       <button class="tab" data-go="projects" ${inProj?'aria-current="page"':''}>${ic('flask')}Proyectos</button>
       <button class="tab" data-act="notif">${ic('bell')}Avisos${unread?`<span class="badge" aria-label="${unread} sin leer">${unread}</span>`:''}</button>
-      <button class="tab" data-act="notes">${ic('notes')}Notas</button>
     </div>`;
 }
 
@@ -958,8 +957,7 @@ function navDrawer(){
   drawer('', `<div class="panel-head"><img src="${LOGO_C}" alt="CINDE" style="height:48px;width:auto"><button class="x" data-close="1" aria-label="Cerrar menú">${ic('x')}</button></div>
     <button class="nav-item" data-go="home" ${S.screen==='home'?'aria-current="page"':''}>${ic('home')}Inicio</button>
     ${MODULES.map(([id,t,,i]) => `<button class="nav-item" data-mod="${id}" ${(id==='projects' && CRUMBS[S.screen] && S.screen!=='home' && S.screen!=='module') || (S.screen==='module' && S.params.mod===id) ? 'aria-current="page"':''}>${ic(i)}${t}${id==='projects' && S.access!=='granted' ? chip(S.access==='none'?'muted':'warn', S.access==='none'?'Sin acceso':'En revisión', S.access==='none'?'lock':'clock') : ''}</button>`).join('')}
-    <div class="pop-sep"></div>
-    <button class="nav-item" data-act="notes">${ic('notes')}Notas de revisión</button>`, 'Menú principal');
+    <div class="pop-sep"></div>`, 'Menú principal');
 }
 
 /* ---------- Eventos globales ---------- */
@@ -980,7 +978,6 @@ document.addEventListener('click', e => {
     case 'drawer': navDrawer(); break;
     case 'notif': notifPop(); break;
     case 'user': userPop(); break;
-    case 'notes': notesPanel(); break;
     case 'a11yreset': A = Object.assign({}, A_DEF); applyA(); a11yPanel(); toast('Valores de accesibilidad restablecidos.'); break;
     case 'export': toast('Se generaría un archivo Excel con la lista de proyectos.'); break;
     case 'addprod': toast('Agregar producto no está incluido en este prototipo.'); break;
