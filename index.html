@@ -289,7 +289,7 @@ tr.retired td{ color:var(--muted); }
 .head-actions{ display:flex; gap:.6rem; flex-wrap:wrap; }
 /* Productos con historial desplegable */
 .plist{ background:var(--surface); border:1px solid var(--line); border-radius:var(--r); overflow:hidden; }
-.prow{ display:grid; grid-template-columns:minmax(0,2.4fr) minmax(0,1fr) minmax(0,1.4fr) minmax(0,1fr) 240px; gap:1rem; align-items:center; padding:.75rem 1rem; }
+.prow{ display:grid; grid-template-columns:minmax(0,2.6fr) minmax(0,1fr) minmax(0,1.6fr) 240px; gap:1rem; align-items:center; padding:.75rem 1rem; }
 .phead{ background:var(--surface-2); border-bottom:1px solid var(--line); font-family:var(--f-display); font-weight:600; font-size:.88rem; color:var(--muted); }
 .pitem + .pitem{ border-top:1px solid var(--line); }
 .pitem > .prow{ cursor:pointer; }
@@ -316,8 +316,8 @@ tr.retired td{ color:var(--muted); }
 .mlabel{ display:none; }
 @media (max-width: 760px){
   .phead{ display:none; }
-  .pitem > .prow{ grid-template-columns:1fr 1fr; grid-template-areas:"name name" "estado corte" "prog prog" "act act"; gap:.5rem .75rem; }
-  .p-c-name{ grid-area:name; } .p-c-estado{ grid-area:estado; } .p-c-corte{ grid-area:corte; justify-self:end; } .p-c-prog{ grid-area:prog; } .p-act{ grid-area:act; justify-content:flex-start; }
+  .pitem > .prow{ grid-template-columns:auto 1fr; grid-template-areas:"name name" "estado prog" "act act"; gap:.5rem .75rem; }
+  .p-c-name{ grid-area:name; } .p-c-estado{ grid-area:estado; } .p-c-prog{ grid-area:prog; } .p-act{ grid-area:act; justify-content:flex-start; }
   .p-act:empty{ display:none; }
   .ppanel{ padding:0 1rem 1rem; }
 }
@@ -407,7 +407,7 @@ function diasCorte(){
 function seed(){
   return {
     access:'none', screen:'home', params:{},
-    notif:[ { text:`El corte de avances de octubre cierra el ${fd(CORTE)}.`, time:'Hoy, 8:00', read:false } ],
+    notif:[ { corte:true, time:'Hoy, 8:00', read:false } ],
     proj:{
       objetivo:'Desarrollar habilidades socioemocionales que permitan a jóvenes rurales participar en los espacios de decisión de su comunidad.',
       impacto:'Actividades con 5 instituciones educativas: 100 niños y 100 niñas.',
@@ -524,7 +524,6 @@ function vHome(){
       <span class="info-wrap"><button class="info-btn" data-act="info" aria-expanded="false" aria-controls="sii-tip" aria-label="¿Qué es SII-CINDE?">${ic('info')}</button>
       <span class="tip" id="sii-tip" role="tooltip">Sistema de información institucional de CINDE que permite hacer seguimiento a los proyectos de investigación y sus productos, gestionar la relación con proveedores, aliados y convocatorias, y consultar en un solo lugar la información de formación, laboral y documental de la Fundación.</span></span></div>
     <p>Hola, Andrés. Elige el módulo con el que vas a trabajar.</p></div></div>
-    ${S.access==='granted' && pendCount() ? notice(pendCount(), true) : ''}
     <div class="mod-head"><h2>Módulos</h2></div>
     <div class="tiles">${MODULES.map(([id,t,d,i]) => `<button class="tile" data-mod="${id}"><span class="ic">${ic(i)}</span><strong>${t}</strong><span class="d">${d}</span>${id==='projects'?accessChip():''}</button>`).join('')}</div>`;
 }
@@ -615,7 +614,7 @@ function productPanel(p){
   return `<div class="ppanel" id="pp-${p.id}">
     ${p.retired ? `<div class="notice" role="status"><span class="n-ic">${ic('lock')}</span><p><b>Producto eliminado.</b><span class="muted"> Por ${esc(p.retired.by)} el ${fd(p.retired.date)}. Motivo: ${esc(p.retired.reason)}. Se conserva su historial, pero ya no suma al avance del proyecto.</span></p></div>`
       : !canAdd(p) ? `<div class="notice ok" role="status"><span class="n-ic">${ic('check')}</span><p><b>Producto completo (100%).</b><span class="muted"> Para registrar un nuevo avance, primero anula uno de los registros.</span></p></div>` : ''}
-    <div class="pmeta"><span>Responsable: <b>${esc(p.resp)}</b></span><span>Entrega esperada: <b>${fd(p.due)}</b></span></div>
+    <div class="pmeta"><span>Tipo: <b>${esc(p.tipo)}</b></span><span>Responsable: <b>${esc(p.resp)}</b></span><span>Entrega esperada: <b>${fd(p.due)}</b></span><span>Corte de octubre: <b>${pendiente(p) ? 'falta avance' : p.retired ? 'no aplica' : 'al día'}</b></span></div>
     ${p.desc ? `<p style="max-width:65ch">${esc(p.desc)}</p>` : ''}
     ${rows.length ? `<div class="tbl-wrap"><table class="mini stacked"><caption class="sr">Historial de avances de ${esc(p.name)}, del más reciente al más antiguo</caption>
       <thead><tr><th scope="col">Fecha</th><th scope="col" class="num">Avance</th><th scope="col">Registrado por</th><th scope="col">Comentario</th><th scope="col"><span class="sr">Acción</span></th></tr></thead>
@@ -634,17 +633,15 @@ function vProducts(){
   return `${crumbs('Productos')}
   <div class="page-head"><div><p class="eyebrow">Participación comunitaria de jóvenes rurales</p><h1>Productos</h1></div>
     <button class="btn btn-secondary" data-act="addprod">${ic('plus')}Agregar producto</button></div>
-  ${notice(pendCount(), false)}
   <div class="toolbar"><div class="search"><label for="qprod" class="sr">Buscar producto</label><div class="box">${ic('search')}<input id="qprod" type="search" placeholder="Buscar por nombre o tipo" value="${esc(S.params.q||'')}" autocomplete="off"></div></div>
     <div class="row"><button class="n-link" data-act="pexpand">Desplegar todo</button><button class="n-link" data-act="pcollapse">Contraer todo</button></div></div>
   <div class="plist" role="list" aria-label="Productos del proyecto">
-    <div class="prow phead" aria-hidden="true"><span>Producto</span><span>Estado</span><span>Avance acumulado</span><span>Corte de octubre</span><span></span></div>
+    <div class="prow phead" aria-hidden="true"><span>Producto</span><span>Estado</span><span>Avance acumulado</span><span></span></div>
     ${list.map(p => { const o = isOpen(p.id); return `<div class="pitem ${o?'open':''} ${p.retired?'retired':''}" role="listitem">
       <div class="prow" data-prod="${p.id}">
-        <div class="p-c-name"><button class="ptoggle" id="pt-${p.id}" data-prod="${p.id}" aria-expanded="${o}" aria-controls="pp-${p.id}">${ic('chev','chev')}<span class="p-name"><strong>${esc(p.name)}</strong><small>${esc(p.tipo)} · ${esc(p.resp)}</small></span></button></div>
+        <div class="p-c-name"><button class="ptoggle" id="pt-${p.id}" data-prod="${p.id}" aria-expanded="${o}" aria-controls="pp-${p.id}">${ic('chev','chev')}<span class="p-name"><strong>${esc(p.name)}</strong></span></button></div>
         <div class="p-c-estado">${estadoChip(p)}</div>
         <div class="p-c-prog">${p.retired ? '<span class="muted">No suma</span>' : prog(acum(p))}</div>
-        <div class="p-c-corte">${pendChip(p)}</div>
         <div class="p-act">${canAdd(p) ? `<button class="btn btn-primary btn-sm" data-reg="${p.id}">${ic('plus')}Registrar avance</button>` : ''}${p.retired ? '' : `<button class="btn-icon" data-act="editprod" data-id="${p.id}" aria-label="Editar datos de ${esc(p.name)}" title="Editar datos del producto">${ic('pencil')}</button><button class="btn-icon danger" data-act="delprod" data-id="${p.id}" aria-label="Eliminar ${esc(p.name)}" title="Eliminar producto">${ic('trash')}</button>`}</div>
       </div>
       ${o ? productPanel(p) : ''}
@@ -1044,7 +1041,8 @@ function requestChange(what){
 /* ---------- Menús ---------- */
 function notifPop(){
   S.notif.forEach(n => n.read = true);
-  pop(`<h2>Notificaciones</h2>${S.notif.length ? S.notif.map(n=>`<div class="pop-item">${ic('bell')}<span>${esc(n.text)}<small>${n.time}</small></span></div>`).join('') : '<p class="empty">No tienes notificaciones.</p>'}`, 'Notificaciones');
+  const txt = n => n.corte ? (S.access === 'granted' && pendCount() ? `Tienes ${plural(pendCount(),'producto pendiente','productos pendientes')} de avance para el corte del ${fd(CORTE)} (${diasCorte().toLowerCase()}).` : `El corte de avances de octubre cierra el ${fd(CORTE)}.`) : n.text;
+  pop(`<h2>Notificaciones</h2>${S.notif.length ? S.notif.map(n=>`<div class="pop-item">${ic('bell')}<span>${esc(txt(n))}${n.corte && S.access === 'granted' && pendCount() ? `<button class="n-link" data-go="products" style="padding-left:0;display:flex;min-height:32px">Ir a productos${ic('chev')}</button>` : ''}<small>${n.time}</small></span></div>`).join('') : '<p class="empty">No tienes notificaciones.</p>'}`, 'Notificaciones');
   renderTop(); renderBottom();
 }
 function userPop(){
