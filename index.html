@@ -79,14 +79,14 @@ main{ max-width:1120px; margin:0 auto; padding-inline:1rem; padding-block:1rem c
 .crumbs li{ display:flex; align-items:center; gap:.35rem; }
 .crumbs li+li::before{ content:"›"; color:var(--muted); }
 .crumbs .lnk{ background:none; border:0; padding:.15rem .1rem; color:var(--info); cursor:pointer; text-decoration:underline; text-underline-offset:2px; }
-.back{ display:inline-flex; align-items:center; gap:.3rem; border:1px solid var(--line); background:var(--surface); border-radius:8px; padding:.4rem .7rem .4rem .45rem; cursor:pointer; min-height:40px; color:var(--fg); font-weight:700; }
+.back{ display:inline-flex; align-items:center; gap:.3rem; border:1px solid var(--line); background:var(--surface); border-radius:8px; padding:.3rem .65rem .3rem .4rem; cursor:pointer; min-height:34px; font-size:.9rem; color:var(--fg); font-weight:700; }
 .page-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:1rem; flex-wrap:wrap; margin-bottom:1.25rem; }
 .page-head .sub{ color:var(--muted); margin-top:.3rem; }
 .eyebrow{ font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); font-weight:700; margin-bottom:.3rem; }
 .row{ display:flex; gap:.75rem; align-items:center; flex-wrap:wrap; }
 .card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:1.25rem; }
 
-.btn{ display:inline-flex; align-items:center; justify-content:center; gap:.45rem; min-height:44px; padding:.55rem 1.1rem; border-radius:8px;
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:.4rem; min-height:40px; padding:.45rem 1rem; border-radius:8px; font-size:.95rem;
   font-weight:700; cursor:pointer; border:1.5px solid transparent; text-decoration:none; white-space:nowrap; }
 .btn-primary{ background:var(--primary); color:var(--on-primary); }
 .btn-primary:hover{ filter:brightness(1.12); }
@@ -95,7 +95,8 @@ main{ max-width:1120px; margin:0 auto; padding-inline:1rem; padding-block:1rem c
 .btn-danger{ background:var(--bad); color:#fff; }
 .btn-danger-outline{ background:transparent; color:var(--bad); border-color:currentColor; }
 .btn-danger-outline:hover{ background:var(--bad-bg); }
-.btn-sm{ min-height:38px; padding:.35rem .8rem; font-size:.92rem; }
+.btn-sm{ min-height:32px; padding:.25rem .7rem; font-size:.86rem; gap:.3rem; }
+.btn-sm svg.i{ width:1.05em; height:1.05em; }
 
 .chip{ display:inline-flex; align-items:center; gap:.45rem; padding:.16rem .6rem; border-radius:999px; font-size:.84rem; font-weight:600; white-space:nowrap;
   background:var(--surface); color:var(--fg); border:1px solid var(--line); }
@@ -140,7 +141,7 @@ main{ max-width:1120px; margin:0 auto; padding-inline:1rem; padding-block:1rem c
 .n-ic{ width:32px; height:32px; border-radius:50%; display:grid; place-items:center; background:var(--primary-soft); color:var(--primary); flex:none; }
 .n-ic svg.i{ width:18px; height:18px; }
 .notice.ok .n-ic{ background:var(--ok-bg); color:var(--ok); }
-.n-link{ display:inline-flex; align-items:center; gap:.15rem; background:none; border:0; color:var(--primary); font-weight:700; padding:.45rem .6rem; border-radius:8px; cursor:pointer; min-height:40px; }
+.n-link{ display:inline-flex; align-items:center; gap:.15rem; background:none; border:0; color:var(--primary); font-weight:700; padding:.35rem .5rem; border-radius:8px; cursor:pointer; min-height:34px; font-size:.92rem; }
 .n-link:hover{ background:var(--primary-soft); }
 
 /* Tablas → tarjetas en celular */
@@ -176,7 +177,7 @@ tr.annulled .pct{ text-decoration:line-through; }
 .search .box{ position:relative; }
 .search .box svg{ position:absolute; left:.7rem; top:50%; transform:translateY(-50%); color:var(--muted); }
 .search .box input{ width:100%; padding-left:2.5rem; }
-input[type=text], input[type=number], input[type=search], textarea{
+input[type=text], input[type=number], input[type=search], select, textarea{
   background:var(--surface); border:1.5px solid var(--muted); border-radius:8px; padding:.6rem .75rem; min-height:44px; width:100%; }
 ::placeholder{ color:var(--muted); opacity:.85; }
 textarea{ min-height:96px; resize:vertical; }
@@ -275,6 +276,54 @@ details.acc[open] > summary .chev{ transform:rotate(90deg); }
 .toast{ background:var(--fg); color:var(--bg); border-radius:10px; padding:.75rem 1rem; display:flex; gap:.7rem; align-items:center; box-shadow:0 10px 30px rgba(0,0,0,.25); animation:pop .2s ease-out; }
 .toast .grow{ flex:1; }
 .toast button{ background:transparent; color:inherit; border:1.5px solid currentColor; border-radius:7px; padding:.3rem .65rem; cursor:pointer; font-weight:700; min-height:36px; }
+.acc-actions{ display:flex; justify-content:flex-end; align-items:center; gap:.5rem; flex-wrap:wrap; margin:-.4rem 0 .6rem; }
+.lock{ color:var(--muted); font-size:.88rem; display:inline-flex; gap:.35rem; align-items:center; margin-right:auto; }
+.lock svg.i{ width:1em; height:1em; }
+.members{ display:flex; flex-direction:column; gap:.4rem; }
+.member{ display:flex; align-items:center; gap:.75rem; padding:.5rem .5rem .5rem .75rem; border:1px solid var(--line); border-radius:8px; }
+.member .grow{ flex:1; min-width:0; }
+.member small{ display:block; color:var(--muted); }
+.subhead{ font-family:var(--f-display); font-weight:600; font-size:.95rem; margin-top:.25rem; }
+.opt{ font-weight:400; color:var(--muted); }
+tr.retired td{ color:var(--muted); }
+.head-actions{ display:flex; gap:.6rem; flex-wrap:wrap; }
+/* Productos con historial desplegable */
+.plist{ background:var(--surface); border:1px solid var(--line); border-radius:var(--r); overflow:hidden; }
+.prow{ display:grid; grid-template-columns:minmax(0,2.4fr) minmax(0,1fr) minmax(0,1.4fr) minmax(0,1fr) 240px; gap:1rem; align-items:center; padding:.75rem 1rem; }
+.phead{ background:var(--surface-2); border-bottom:1px solid var(--line); font-family:var(--f-display); font-weight:600; font-size:.88rem; color:var(--muted); }
+.pitem + .pitem{ border-top:1px solid var(--line); }
+.pitem > .prow{ cursor:pointer; }
+.pitem > .prow:hover{ background:color-mix(in srgb, var(--primary-soft) 40%, transparent); }
+.pitem.open{ background:color-mix(in srgb, var(--primary-soft) 22%, var(--surface)); }
+.pitem.retired .p-name strong, .pitem.retired .p-name small{ color:var(--muted); }
+.ptoggle{ display:flex; align-items:center; gap:.6rem; background:none; border:0; padding:.2rem 0; text-align:left; cursor:pointer; min-width:0; width:100%; color:var(--fg); }
+.ptoggle .chev{ color:var(--muted); transition:transform .15s; }
+.ptoggle[aria-expanded="true"] .chev{ transform:rotate(90deg); }
+.p-name{ display:flex; flex-direction:column; min-width:0; }
+.p-name strong{ font-weight:700; }
+.p-name small{ color:var(--muted); font-size:.88rem; }
+.ppanel{ padding:0 1rem 1.1rem 2.75rem; display:flex; flex-direction:column; gap:.85rem; }
+.pmeta{ display:flex; flex-wrap:wrap; gap:.35rem 1.5rem; font-size:.92rem; color:var(--muted); }
+.pmeta b{ color:var(--fg); font-weight:600; }
+.ppanel .notice{ margin:0; }
+.ppanel .tbl-wrap{ background:var(--surface); }
+.p-act{ display:flex; justify-content:flex-end; align-items:center; gap:.4rem; }
+.btn-icon{ flex:none; width:32px; min-height:32px; padding:0; border-radius:8px; background:var(--surface); border:1.5px solid var(--line); color:var(--fg); display:inline-grid; place-items:center; cursor:pointer; }
+.btn-icon:hover{ background:var(--surface-2); }
+.btn-icon.danger{ color:var(--bad); }
+.btn-icon.danger:hover{ background:var(--bad-bg); border-color:color-mix(in srgb, var(--bad) 40%, var(--line)); }
+.btn-icon svg.i{ width:16px; height:16px; }
+.mlabel{ display:none; }
+@media (max-width: 760px){
+  .phead{ display:none; }
+  .pitem > .prow{ grid-template-columns:1fr 1fr; grid-template-areas:"name name" "estado corte" "prog prog" "act act"; gap:.5rem .75rem; }
+  .p-c-name{ grid-area:name; } .p-c-estado{ grid-area:estado; } .p-c-corte{ grid-area:corte; justify-self:end; } .p-c-prog{ grid-area:prog; } .p-act{ grid-area:act; justify-content:flex-start; }
+  .p-act:empty{ display:none; }
+  .ppanel{ padding:0 1rem 1rem; }
+}
+@media (pointer: coarse){
+  .btn{ min-height:44px; } .btn-sm{ min-height:38px; } .btn-icon{ width:38px; min-height:38px; } .back, .n-link{ min-height:40px; }
+}
 .placeholder{ text-align:center; padding:2.5rem 1rem; color:var(--muted); }
 .placeholder svg.i{ width:40px; height:40px; color:var(--muted); }
 @media (forced-colors: active){ .chip, .btn, .notice, .tile, details.acc, .card{ border:1px solid CanvasText; } .prog .bar span{ background:Highlight; } }
@@ -330,6 +379,8 @@ const P = {
   file:'<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/>',
   logout:'<path d="M15 4h4v16h-4M10 8l-4 4 4 4M6 12h10"/>',
   history:'<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5M12 7v5l3 2"/>',
+  pencil:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>',
+  trash:'<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>',
   save:'<path d="M5 4h11l3 3v13H5z"/><path d="M8 4v5h7V4M8 20v-6h8v6"/>'
 };
 const ic = (n, cls) => `<svg class="i ${cls||''}" viewBox="0 0 24 24" aria-hidden="true">${P[n]||''}</svg>`;
@@ -340,7 +391,7 @@ const pctf = n => `${String(Math.round(n*10)/10).replace('.', ',')}%`;
 const hhmm = t => { const d = t ? new Date(t) : new Date(); return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`; };
 const $ = (s, r=document) => r.querySelector(s);
 const PERIODO = `${fd(PER_INI)} – ${fd(PER_FIN)}`;
-let uid = 100; const nid = () => 'h' + (++uid);
+let uid = 100, pid = 10; const nid = () => 'h' + (++uid);
 const store = {
   get(k){ try { return JSON.parse(localStorage.getItem(k) || 'null'); } catch(e){ return null; } },
   set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch(e){ return false; } },
@@ -357,19 +408,26 @@ function seed(){
   return {
     access:'none', screen:'home', params:{},
     notif:[ { text:`El corte de avances de octubre cierra el ${fd(CORTE)}.`, time:'Hoy, 8:00', read:false } ],
+    proj:{
+      objetivo:'Desarrollar habilidades socioemocionales que permitan a jóvenes rurales participar en los espacios de decisión de su comunidad.',
+      impacto:'Actividades con 5 instituciones educativas: 100 niños y 100 niñas.',
+      team:[ { name:ME, rol:'Investigador principal', ded:'20 h/semana' }, { name:MARIA, rol:'Coinvestigadora', ded:'12 h/semana' }, { name:'Camila Torres', rol:'Asistente de investigación', ded:'20 h/semana' } ],
+      grupo:'Grupo de investigación en Juventud y Participación', linea:'Participación juvenil y ciudadanía',
+      orgs:'5 instituciones educativas rurales', poblacion:'100 niños y 100 niñas'
+    },
     products:[
-      { id:'p1', name:'Informe de caracterización', tipo:'Informe técnico', hist:[
+      { id:'p1', name:'Informe de caracterización', tipo:'Informe técnico', resp:ME, due:'2026-11-30', desc:'', hist:[
         { id:'h1', date:'2026-09-15', pct:5, by:ME, comment:'Diseño de instrumentos de caracterización' } ] },
-      { id:'p2', name:'Artículo sobre participación juvenil', tipo:'Artículo científico', hist:[
+      { id:'p2', name:'Artículo sobre participación juvenil', tipo:'Artículo científico', resp:MARIA, due:'2026-10-15', desc:'', hist:[
         { id:'h2', date:'2026-06-20', pct:60, by:MARIA, comment:'Borrador completo enviado a revisión de pares' },
         { id:'h3', date:'2026-10-03', pct:40, by:ME, comment:'Ajustes de pares incorporados; artículo aceptado' } ] },
-      { id:'p3', name:'Taller de socialización con líderes', tipo:'Evento', hist:[
+      { id:'p3', name:'Taller de socialización con líderes', tipo:'Evento', resp:ME, due:'2026-08-15', desc:'', hist:[
         { id:'h4', date:'2026-07-10', pct:30, by:ME, comment:'Convocatoria y logística del taller' },
         { id:'h5', date:'2026-08-05', pct:70, by:ME, comment:'Taller realizado con 32 líderes comunitarios' } ] },
-      { id:'p4', name:'Cartilla de resultados para la comunidad', tipo:'Material divulgativo', hist:[
+      { id:'p4', name:'Cartilla de resultados para la comunidad', tipo:'Material divulgativo', resp:MARIA, due:'2026-12-10', desc:'', hist:[
         { id:'h6', date:'2026-08-12', pct:13, by:ME, comment:'Estructura y contenidos aprobados' },
         { id:'h7', date:'2026-10-02', pct:70, by:MARIA, comment:'Cartilla impresa y entregada a la comunidad' } ] },
-      { id:'p5', name:'Guía metodológica para facilitadores', tipo:'Material pedagógico', hist:[] }
+      { id:'p5', name:'Guía metodológica para facilitadores', tipo:'Material pedagógico', resp:'Camila Torres', due:'2026-12-15', desc:'', hist:[] }
     ]
   };
 }
@@ -380,22 +438,25 @@ const chrono = p => p.hist.map((h,i) => ({h,i})).sort((a,b) => a.h.date < b.h.da
 const lastA = p => { const a = chrono(p).filter(h => !h.annulled); return a[a.length-1]; };
 /* Estado automático: depende solo del acumulado */
 const estadoP = p => { const a = acum(p); return a <= 0 ? 'Sin iniciar' : a >= 100 ? 'Finalizado' : 'En curso'; };
-const pendiente = p => estadoP(p) !== 'Finalizado' && !active(p).some(h => h.date >= CORTE_INI);
+const pendiente = p => !p.retired && estadoP(p) !== 'Finalizado' && !active(p).some(h => h.date >= CORTE_INI);
 const prod = id => S.products.find(p => p.id === id);
-const projAvance = () => S.products.reduce((a,p) => a + acum(p), 0) / S.products.length;
+const live = () => S.products.filter(p => !p.retired);
+const projAvance = () => { const l = live(); return l.length ? l.reduce((a,p) => a + acum(p), 0) / l.length : 0; };
 const pendCount = () => S.products.filter(pendiente).length;
+const TIPOS = ['Informe técnico','Artículo científico','Evento','Material divulgativo','Material pedagógico','Ponencia','Otro'];
 const plural = (n, s, pl) => `${n} ${n===1?s:pl}`;
 
 /* ---------- Componentes ---------- */
 const prog = v => `<div class="prog"><div class="bar" aria-hidden="true"><span class="${v>=100?'full':''}" style="width:${Math.min(100,v)}%"></span></div><b>${pctf(v)}</b></div>`;
 const chip = (kind, text) => `<span class="chip${kind==='muted'?' k-txt-muted':''}"><span class="cdot k-${kind}" aria-hidden="true"></span>${esc(text)}</span>`;
 function estadoChip(p){
+  if (p.retired) return chip('muted', 'Eliminado');
   const e = estadoP(p);
-  if (e === 'Finalizado') return chip('ok', 'Finalizado', 'check');
-  if (e === 'Sin iniciar') return chip('muted', 'Sin iniciar', 'circle');
-  return chip('info', 'En curso', 'clock');
+  if (e === 'Finalizado') return chip('ok', 'Finalizado');
+  if (e === 'Sin iniciar') return chip('muted', 'Sin iniciar');
+  return chip('info', 'En curso');
 }
-const pendChip = p => pendiente(p) ? chip('warn','Falta avance') : chip('ok','Al día');
+const pendChip = p => p.retired ? '<span class="muted">—</span>' : pendiente(p) ? chip('warn','Falta avance') : chip('ok','Al día');
 function notice(pc, link){
   if (!pc) return `<div class="notice ok" role="status"><span class="n-ic">${ic('check')}</span><p><b>Todo al día</b><span class="muted"> · corte del ${fd(CORTE)}</span></p></div>`;
   return `<div class="notice" role="status"><span class="n-ic">${ic('clock')}</span><p><b>${plural(pc,'producto pendiente','productos pendientes')} de avance</b><span class="muted"> · corte del ${fd(CORTE)}</span></p>${chip('muted', diasCorte())}${link?`<button class="n-link" data-go="products">Ir a productos${ic('chev')}</button>`:''}</div>`;
@@ -405,7 +466,6 @@ function notice(pc, link){
 const CRUMBS = {
   home:[], projects:[['home','Inicio']], ficha:[['home','Inicio'],['projects','Proyectos de Investigación']],
   products:[['home','Inicio'],['projects','Proyectos de Investigación'],['ficha','Participación comunitaria…']],
-  detail:[['home','Inicio'],['projects','Proyectos de Investigación'],['ficha','Participación comunitaria…'],['products','Productos']],
   module:[['home','Inicio']]
 };
 const BACKLBL = { home:'Inicio', projects:'Proyectos', ficha:'Ficha del proyecto', products:'Productos' };
@@ -435,7 +495,7 @@ function renderTop(){
 }
 function renderBottom(){
   const unread = S.notif.filter(n=>!n.read).length;
-  const inProj = ['projects','ficha','products','detail'].includes(S.screen);
+  const inProj = ['projects','ficha','products'].includes(S.screen);
   $('#bottombar').innerHTML = `<div class="bb-tabs">
       <button class="tab" data-go="home" ${S.screen==='home'?'aria-current="page"':''}>${ic('home')}Inicio</button>
       <button class="tab" data-go="projects" ${inProj?'aria-current="page"':''}>${ic('flask')}Proyectos</button>
@@ -492,49 +552,53 @@ function vProjects(){
     </tbody></table></div>`;
 }
 const accSum = (id, t, d, st) => `<summary><span class="txt"><strong>${t}</strong><span>${d}</span></span>${st}${ic('chev','chev')}</summary>`;
+const editBtn = (act, label) => `<button class="n-link" data-act="${act}">${ic('pencil')}${label||'Editar'}</button>`;
+const lockNote = what => `<span class="lock">${ic('lock')}${what} solo los cambia el administrador.</span><button class="n-link" data-act="reqchange" data-what="${esc(what)}">Solicitar cambio</button>`;
 function vFicha(){
-  const pc = pendCount();
-  const done = chip('ok','Completa','check');
-  const open = S.params.open || '';
-  const o = id => open === id ? 'open' : '';
+  const pc = pendCount(); const J = S.proj;
+  const done = chip('ok','Completa');
+  const o = id => (S.params.open || '') === id ? 'open' : '';
   return `${crumbs('Ficha del proyecto')}
   <div class="page-head"><div><p class="eyebrow">Ficha del proyecto · ID-2026-014</p><h1>Participación comunitaria de jóvenes rurales</h1></div></div>
   <div class="card" style="margin-bottom:1.5rem"><div class="summary-grid">
     <dl class="kv"><dt>Periodo</dt><dd>${PERIODO}</dd></dl>
-    <dl class="kv"><dt>Estado</dt><dd>${pc ? chip('warn','Avance pendiente','alert') : chip('ok','Al día','check')}</dd></dl>
+    <dl class="kv"><dt>Estado</dt><dd>${pc ? chip('warn','Avance pendiente') : chip('ok','Al día')}</dd></dl>
     <dl class="kv"><dt>Avance general</dt><dd>${prog(projAvance())}</dd></dl>
     <dl class="kv"><dt>Tu rol</dt><dd>Investigador principal</dd></dl>
   </div></div>
   <div class="acc-tools"><h2>Secciones de la ficha</h2><div class="row"><button class="n-link" data-act="accopen">Expandir todo</button><button class="n-link" data-act="accclose">Contraer todo</button></div></div>
   <div class="accs">
     <details class="acc" ${o('general')}>${accSum('general','General','Información general', done)}
-      <div class="acc-body"><dl class="def">
+      <div class="acc-body"><div class="acc-actions">${lockNote('El código y el periodo')}${editBtn('edit-general','Editar objetivo e impacto')}</div>
+      <dl class="def">
         <dt>Código</dt><dd>ID-2026-014</dd>
         <dt>Periodo</dt><dd>${PERIODO}</dd>
-        <dt>Objetivo</dt><dd>Desarrollar habilidades socioemocionales que permitan a jóvenes rurales participar en los espacios de decisión de su comunidad.</dd>
-        <dt>Impacto esperado</dt><dd>Actividades con 5 instituciones educativas: 100 niños y 100 niñas.</dd>
+        <dt>Objetivo</dt><dd>${esc(J.objetivo)}</dd>
+        <dt>Impacto esperado</dt><dd>${esc(J.impacto)}</dd>
       </dl></div></details>
-    <details class="acc" ${o('team')}>${accSum('team','Integrantes','Equipo del proyecto', done)}
-      <div class="acc-body"><div class="mini-wrap"><table class="mini"><thead><tr><th>Nombre</th><th>Rol</th><th>Dedicación</th></tr></thead><tbody>
-        <tr><td>Andrés Gómez</td><td>Investigador principal</td><td>20 h/semana</td></tr>
-        <tr><td>María F. Ríos</td><td>Coinvestigadora</td><td>12 h/semana</td></tr>
-        <tr><td>Camila Torres</td><td>Asistente de investigación</td><td>20 h/semana</td></tr>
-      </tbody></table></div><p class="ex">Datos de ejemplo.</p></div></details>
+    <details class="acc" ${o('team')}>${accSum('team','Integrantes', `${plural(J.team.length,'integrante','integrantes')}`, done)}
+      <div class="acc-body"><div class="acc-actions">${editBtn('edit-team','Editar integrantes')}</div>
+      <div class="mini-wrap"><table class="mini"><thead><tr><th>Nombre</th><th>Rol</th><th>Dedicación</th></tr></thead><tbody>
+        ${J.team.map(m => `<tr><td>${esc(m.name)}${m.name===ME?' <span class="muted">(tú)</span>':''}</td><td>${esc(m.rol)}</td><td>${esc(m.ded)}</td></tr>`).join('')}
+      </tbody></table></div></div></details>
     <details class="acc" ${o('costs')}>${accSum('costs','Entidades y costos','Entidades y presupuesto asociado', done)}
-      <div class="acc-body"><div class="mini-wrap"><table class="mini"><thead><tr><th>Entidad</th><th>Participación</th><th class="num">Aporte (COP)</th></tr></thead><tbody>
+      <div class="acc-body"><div class="acc-actions">${lockNote('Las entidades y los aportes')}</div>
+      <div class="mini-wrap"><table class="mini"><thead><tr><th>Entidad</th><th>Participación</th><th class="num">Aporte (COP)</th></tr></thead><tbody>
         <tr><td>Fundación CINDE</td><td>Ejecutora</td><td class="num">$ 85.000.000</td></tr>
         <tr><td>Entidad cofinanciadora</td><td>Cofinanciadora</td><td class="num">$ 40.000.000</td></tr>
         <tr><td><b>Total</b></td><td></td><td class="num"><b>$ 125.000.000</b></td></tr>
       </tbody></table></div><p class="ex">Datos de ejemplo.</p></div></details>
     <details class="acc" ${o('groups')}>${accSum('groups','Grupos de investigación','Grupos vinculados', done)}
-      <div class="acc-body"><dl class="def"><dt>Grupo principal</dt><dd>Grupo de investigación en Juventud y Participación</dd><dt>Línea</dt><dd>Participación juvenil y ciudadanía</dd></dl><p class="ex">Datos de ejemplo.</p></div></details>
+      <div class="acc-body"><div class="acc-actions">${editBtn('edit-groups')}</div>
+      <dl class="def"><dt>Grupo principal</dt><dd>${esc(J.grupo)}</dd><dt>Línea</dt><dd>${esc(J.linea)}</dd></dl></div></details>
     <details class="acc" ${o('orgs')}>${accSum('orgs','Organizaciones beneficiarias','Organizaciones vinculadas', done)}
-      <div class="acc-body"><dl class="def"><dt>Instituciones educativas</dt><dd>5 instituciones educativas rurales</dd><dt>Población</dt><dd>100 niños y 100 niñas</dd></dl><p class="ex">Datos de ejemplo.</p></div></details>
-    <details class="acc" ${o('products')}>${accSum('products','Productos','Productos y avances de seguimiento', pc ? chip('warn', plural(pc,'pendiente','pendientes'), 'alert') : done)}
+      <div class="acc-body"><div class="acc-actions">${editBtn('edit-orgs')}</div>
+      <dl class="def"><dt>Organizaciones</dt><dd>${esc(J.orgs)}</dd><dt>Población</dt><dd>${esc(J.poblacion)}</dd></dl></div></details>
+    <details class="acc" ${o('products')}>${accSum('products','Productos', `${plural(live().length,'producto activo','productos activos')}`, pc ? chip('warn', plural(pc,'pendiente','pendientes')) : done)}
       <div class="acc-body"><div class="mini-wrap"><table class="mini"><thead><tr><th>Producto</th><th>Estado</th><th>Avance</th></tr></thead><tbody>
-        ${S.products.map(p => `<tr><td>${esc(p.name)}</td><td>${estadoChip(p)}</td><td>${prog(acum(p))}</td></tr>`).join('')}
+        ${sortedProducts().map(p => `<tr><td><button class="row-title" data-prodopen="${p.id}">${esc(p.name)}</button></td><td>${estadoChip(p)}</td><td>${p.retired ? '<span class="muted">No suma</span>' : prog(acum(p))}</td></tr>`).join('')}
       </tbody></table></div>
-      <div class="acc-foot"><button class="btn btn-primary" data-go="products">Gestionar productos y avances${ic('chev')}</button></div></div></details>
+      <div class="acc-foot row" style="justify-content:space-between"><button class="n-link" data-act="addprod">${ic('plus')}Agregar producto</button><button class="n-link" data-go="products">Registrar y gestionar avances${ic('chev')}</button></div></div></details>
   </div>`;
 }
 function vModule(){
@@ -543,61 +607,64 @@ function vModule(){
   <div class="card placeholder">${ic(m[3])}<p style="margin-top:.75rem">Este módulo no hace parte del prototipo.</p>
   <div class="row" style="justify-content:center;margin-top:1rem"><button class="btn btn-primary" data-mod="projects">Ir a Proyectos de Investigación</button></div></div>`;
 }
-const canAdd = p => acum(p) < 100;
+const canAdd = p => !p.retired && acum(p) < 100;
+const sortedProducts = () => [...S.products].sort((a,b) => (a.retired?1:0) - (b.retired?1:0));
+const isOpen = id => (S.params.exp || []).includes(id);
+function productPanel(p){
+  const rows = [...chrono(p)].reverse();
+  return `<div class="ppanel" id="pp-${p.id}">
+    ${p.retired ? `<div class="notice" role="status"><span class="n-ic">${ic('lock')}</span><p><b>Producto eliminado.</b><span class="muted"> Por ${esc(p.retired.by)} el ${fd(p.retired.date)}. Motivo: ${esc(p.retired.reason)}. Se conserva su historial, pero ya no suma al avance del proyecto.</span></p></div>`
+      : !canAdd(p) ? `<div class="notice ok" role="status"><span class="n-ic">${ic('check')}</span><p><b>Producto completo (100%).</b><span class="muted"> Para registrar un nuevo avance, primero anula uno de los registros.</span></p></div>` : ''}
+    <div class="pmeta"><span>Responsable: <b>${esc(p.resp)}</b></span><span>Entrega esperada: <b>${fd(p.due)}</b></span></div>
+    ${p.desc ? `<p style="max-width:65ch">${esc(p.desc)}</p>` : ''}
+    ${rows.length ? `<div class="tbl-wrap"><table class="mini stacked"><caption class="sr">Historial de avances de ${esc(p.name)}, del más reciente al más antiguo</caption>
+      <thead><tr><th scope="col">Fecha</th><th scope="col" class="num">Avance</th><th scope="col">Registrado por</th><th scope="col">Comentario</th><th scope="col"><span class="sr">Acción</span></th></tr></thead>
+      <tbody>${rows.map(h => `<tr class="${h.annulled?'annulled':''}">
+        <td data-label="Fecha" style="white-space:nowrap">${fd(h.date)}</td>
+        <td data-label="Avance" class="num"><span class="pct">+${pctf(h.pct)}</span></td>
+        <td data-label="Registrado por"><span>${esc(h.by)}${h.by===ME?' <span class="muted">(tú)</span>':''}</span></td>
+        <td data-label="Comentario"><span>${esc(h.comment)}${h.annulled ? `<span class="muted" style="display:block">Anulado por ${esc(h.annulled.by)} el ${fd(h.annulled.date)}. Motivo: ${esc(h.annulled.reason)}</span>`:''}</span></td>
+        <td class="td-actions">${h.annulled ? chip('muted','Anulado') : p.retired ? '' : `<button class="btn btn-danger-outline btn-sm" data-anular="${h.id}">Anular</button>`}</td></tr>`).join('')}</tbody></table></div>`
+    : `<p class="muted">Este producto aún no tiene avances.</p>`}
+  </div>`;
+}
 function vProducts(){
   const q = (S.params.q||'').toLowerCase();
-  const list = S.products.filter(p => !q || p.name.toLowerCase().includes(q) || p.tipo.toLowerCase().includes(q));
+  const list = sortedProducts().filter(p => !q || p.name.toLowerCase().includes(q) || p.tipo.toLowerCase().includes(q));
   return `${crumbs('Productos')}
   <div class="page-head"><div><p class="eyebrow">Participación comunitaria de jóvenes rurales</p><h1>Productos</h1></div>
     <button class="btn btn-secondary" data-act="addprod">${ic('plus')}Agregar producto</button></div>
   ${notice(pendCount(), false)}
-  <div class="toolbar"><div class="search"><label for="qprod" class="sr">Buscar producto</label><div class="box">${ic('search')}<input id="qprod" type="search" placeholder="Buscar por nombre o tipo" value="${esc(S.params.q||'')}" autocomplete="off"></div></div></div>
-  <div class="tbl-wrap"><table class="stacked"><caption class="sr">Productos del proyecto</caption>
-    <thead><tr><th scope="col">Producto</th><th scope="col">Estado</th><th scope="col">Avance acumulado</th><th scope="col">Corte de octubre</th><th scope="col"><span class="sr">Acción</span></th></tr></thead>
-    <tbody>${list.map(p => `<tr class="clickable" data-prod="${p.id}">
-      <td class="td-main" data-label="Producto"><button class="row-title" data-prod="${p.id}" aria-label="${esc(p.name)}: ver historial de avances">${esc(p.name)}</button><div class="muted">${esc(p.tipo)}</div></td>
-      <td data-label="Estado">${estadoChip(p)}</td>
-      <td data-label="Avance">${prog(acum(p))}</td>
-      <td data-label="Corte">${pendChip(p)}</td>
-      <td class="td-actions">${canAdd(p) ? `<button class="btn btn-primary btn-sm" data-reg="${p.id}">${ic('plus')}Registrar avance</button>` : `<button class="btn btn-secondary btn-sm" data-prod="${p.id}">${ic('history')}Ver historial</button>`}</td>
-    </tr>`).join('') || `<tr><td colspan="5" class="placeholder">No hay productos que coincidan con “${esc(S.params.q)}”.</td></tr>`}</tbody></table></div>
-  <p class="muted" style="margin-top:.75rem">Toca un producto para ver su historial, anular avances o solicitar correcciones.</p>`;
+  <div class="toolbar"><div class="search"><label for="qprod" class="sr">Buscar producto</label><div class="box">${ic('search')}<input id="qprod" type="search" placeholder="Buscar por nombre o tipo" value="${esc(S.params.q||'')}" autocomplete="off"></div></div>
+    <div class="row"><button class="n-link" data-act="pexpand">Desplegar todo</button><button class="n-link" data-act="pcollapse">Contraer todo</button></div></div>
+  <div class="plist" role="list" aria-label="Productos del proyecto">
+    <div class="prow phead" aria-hidden="true"><span>Producto</span><span>Estado</span><span>Avance acumulado</span><span>Corte de octubre</span><span></span></div>
+    ${list.map(p => { const o = isOpen(p.id); return `<div class="pitem ${o?'open':''} ${p.retired?'retired':''}" role="listitem">
+      <div class="prow" data-prod="${p.id}">
+        <div class="p-c-name"><button class="ptoggle" id="pt-${p.id}" data-prod="${p.id}" aria-expanded="${o}" aria-controls="pp-${p.id}">${ic('chev','chev')}<span class="p-name"><strong>${esc(p.name)}</strong><small>${esc(p.tipo)} · ${esc(p.resp)}</small></span></button></div>
+        <div class="p-c-estado">${estadoChip(p)}</div>
+        <div class="p-c-prog">${p.retired ? '<span class="muted">No suma</span>' : prog(acum(p))}</div>
+        <div class="p-c-corte">${pendChip(p)}</div>
+        <div class="p-act">${canAdd(p) ? `<button class="btn btn-primary btn-sm" data-reg="${p.id}">${ic('plus')}Registrar avance</button>` : ''}${p.retired ? '' : `<button class="btn-icon" data-act="editprod" data-id="${p.id}" aria-label="Editar datos de ${esc(p.name)}" title="Editar datos del producto">${ic('pencil')}</button><button class="btn-icon danger" data-act="delprod" data-id="${p.id}" aria-label="Eliminar ${esc(p.name)}" title="Eliminar producto">${ic('trash')}</button>`}</div>
+      </div>
+      ${o ? productPanel(p) : ''}
+    </div>`; }).join('') || `<p class="placeholder">No hay productos que coincidan con “${esc(S.params.q)}”.</p>`}
+  </div>
+  <p class="muted" style="margin-top:.75rem">Toca un producto para ver su historial, anular avances o eliminarlo.</p>`;
 }
-function vDetail(){
-  const p = prod(S.params.id) || S.products[0];
-  const l = lastA(p);
-  const ch = chrono(p);
-  const rows = [...ch].reverse();
-  return `${crumbs(p.name)}
-  <div class="page-head"><div><p class="eyebrow">Detalle de avances · ${esc(p.tipo)}</p><h1>${esc(p.name)}</h1>
-    <p class="sub">${l ? `Último avance válido: +${pctf(l.pct)} el ${fd(l.date)}, por ${esc(l.by)}` : 'Aún no hay avances registrados.'}</p></div>
-    ${canAdd(p) ? `<button class="btn btn-primary" data-reg="${p.id}">${ic('plus')}Registrar avance</button>` : ''}</div>
-  ${!canAdd(p) ? `<div class="notice ok" role="status"><span class="n-ic">${ic('check')}</span><p><b>Producto completo (100%).</b><span class="muted"> Para registrar un nuevo avance, primero anula uno de los registros.</span></p></div>` : ''}
-  <div class="card" style="margin-bottom:1.5rem"><div class="summary-grid">
-    <dl class="kv"><dt>Estado</dt><dd>${estadoChip(p)}</dd></dl>
-    <dl class="kv"><dt>Avance acumulado</dt><dd>${prog(acum(p))}</dd></dl>
-    <dl class="kv"><dt>Corte de octubre</dt><dd>${pendChip(p)}</dd></dl>
-    <dl class="kv"><dt>Periodo del proyecto</dt><dd>${PERIODO}</dd></dl>
-  </div></div>
-  <div class="row" style="justify-content:space-between;margin-bottom:.75rem"><h2>Historial de avances</h2><span class="muted">Los avances anulados se conservan, pero no suman.</span></div>
-  ${rows.length ? `<div class="tbl-wrap"><table class="stacked"><caption class="sr">Historial de avances de ${esc(p.name)}, del más reciente al más antiguo</caption>
-    <thead><tr><th scope="col">Fecha</th><th scope="col" class="num">Avance</th><th scope="col">Registrado por</th><th scope="col">Comentario</th><th scope="col"><span class="sr">Acción</span></th></tr></thead>
-    <tbody>${rows.map(h => {
-      let act;
-      if (h.annulled) act = chip('muted','Anulado','x');
-      else if (h.correction) act = chip('info','Corrección solicitada','clock');
-      else if (h.by === ME) act = `<button class="btn btn-danger-outline btn-sm" data-anular="${h.id}">Anular</button>`;
-      else act = `<button class="btn btn-secondary btn-sm" data-corr="${h.id}">Solicitar corrección</button>`;
-      return `<tr class="${h.annulled?'annulled':''}">
-        <td data-label="Fecha" style="white-space:nowrap">${fd(h.date)}</td>
-        <td data-label="Avance" class="num"><span class="pct">+${pctf(h.pct)}</span></td>
-        <td data-label="Registrado por">${esc(h.by)}${h.by===ME?' <span class="muted">(tú)</span>':''}</td>
-        <td data-label="Comentario">${esc(h.comment)}${h.annulled ? `<div class="muted">Anulado por ${esc(h.annulled.by)} el ${fd(h.annulled.date)}. Motivo: ${esc(h.annulled.reason)}</div>`:''}${h.correction ? `<div class="muted">Solicitud enviada el ${fd(h.correction.date)}: ${esc(h.correction.what)}</div>`:''}</td>
-        <td class="td-actions">${act}</td></tr>`;
-    }).join('')}</tbody></table></div>`
-  : `<div class="card placeholder">${ic('history')}<p style="margin-top:.75rem">Este producto aún no tiene avances.</p><div class="row" style="justify-content:center;margin-top:1rem"><button class="btn btn-primary" data-reg="${p.id}">${ic('plus')}Registrar el primer avance</button></div></div>`}`;
+function showProduct(id){
+  const exp = S.screen === 'products' ? (S.params.exp || []) : [];
+  if (!exp.includes(id)) exp.push(id);
+  const q = S.screen === 'products' ? S.params.q : '';
+  S.screen = 'products'; S.params = { exp, q }; closeLayer(); render();
+  const el = $('#pt-'+id); if (el){ el.scrollIntoView({ block:'start' }); el.focus({ preventScroll:true }); }
 }
-const VIEWS = { home:vHome, projects:vProjects, ficha:vFicha, products:vProducts, detail:vDetail, module:vModule };
+function toggleProduct(id){
+  const exp = S.params.exp || (S.params.exp = []);
+  const i = exp.indexOf(id); if (i >= 0) exp.splice(i,1); else exp.push(id);
+  render(); const el = $('#pt-'+id); el && el.focus({ preventScroll:true });
+}
+const VIEWS = { home:vHome, projects:vProjects, ficha:vFicha, products:vProducts, module:vModule };
 function render(){ renderTop(); renderBottom(); $('#app').innerHTML = (VIEWS[S.screen]||vHome)(); }
 
 /* ---------- Ventanas ---------- */
@@ -662,6 +729,13 @@ function setErr(id, msg){
   else { e.hidden = true; e.innerHTML = ''; f.removeAttribute('aria-invalid'); wrap && wrap.classList.remove('invalid'); }
 }
 
+/* ---------- Campo de fecha dd mes aaaa ---------- */
+const dateField = (id, val, min, max, def) => `<div class="datefield"><input class="shown" id="${id}-txt" type="text" readonly tabindex="-1" aria-hidden="true" value="${fd(val)}" placeholder="dd mes aaaa">${ic('cal','cal')}<input id="${id}" type="date" value="${val||''}" data-def="${def||''}" min="${min}" max="${max}" required aria-describedby="e-${id.replace('f-','')}"></div>`;
+function wireDate(ov, id){
+  const nd = $('#'+id, ov), td = $('#'+id+'-txt', ov);
+  nd.addEventListener('click', () => { try { nd.showPicker(); } catch(e){} });
+  ['change','input'].forEach(ev => nd.addEventListener(ev, () => { td.value = fd(nd.value); }));
+}
 /* ---------- Autoguardado ---------- */
 function bindAutosave(ov, key, ids){
   const st = $('#as-status', ov); let t;
@@ -715,7 +789,7 @@ function regForm(pid, pre, noDraft){
   if (max <= 0){
     modal({ tone:'info', icon:'check', title:'Este producto ya está al 100%',
       body:`<p><b>${esc(p.name)}</b> está finalizado. Para registrar un nuevo avance, primero anula uno de los registros en el historial.</p>`,
-      actions:[ { label:'Cerrar' }, { label:'Ver historial', kind:'primary', onClick:() => { go('detail', { id:p.id }); return true; } } ] });
+      actions:[ { label:'Cerrar' }, { label:'Ver historial', kind:'primary', onClick:() => { showProduct(p.id); return true; } } ] });
     return;
   }
   const key = 'reg-'+pid;
@@ -727,8 +801,7 @@ function regForm(pid, pre, noDraft){
     <form id="regf" novalidate style="display:flex;flex-direction:column;gap:1rem">
       <div class="form-grid">
         <div class="field"><label for="f-date">Fecha del avance</label>
-          <div class="datefield"><input class="shown" id="f-date-txt" type="text" readonly tabindex="-1" aria-hidden="true" value="${fd(v.date)}" placeholder="dd mes aaaa">
-          ${ic('cal','cal')}<input id="f-date" type="date" value="${v.date}" data-def="${TODAY}" min="${PER_INI}" max="${TODAY}" required aria-describedby="e-date"></div>
+          ${dateField('f-date', v.date, PER_INI, TODAY, TODAY)}
           <span class="err" id="e-date" hidden></span></div>
         <div class="field"><label for="f-pct">Avance de este periodo (%)</label>
           <input id="f-pct" type="number" inputmode="decimal" min="1" max="${max}" step="any" value="${esc(v.pct)}" data-def="" placeholder="Entre 1 y ${String(max).replace('.',',')}" required aria-describedby="e-pct">
@@ -739,10 +812,7 @@ function regForm(pid, pre, noDraft){
         <span class="err" id="e-com" hidden></span></div>
     </form>`,
     actions:[ { label:'Cancelar' }, { label:'Guardar avance', kind:'primary', onClick:() => submitReg(pid) } ] });
-  const nd = $('#f-date', ov), td = $('#f-date-txt', ov);
-  nd.addEventListener('click', () => { try { nd.showPicker(); } catch(e){} });
-  nd.addEventListener('change', () => { td.value = fd(nd.value); });
-  nd.addEventListener('input', () => { td.value = fd(nd.value); });
+  wireDate(ov, 'f-date');
   $('#regf', ov).addEventListener('submit', e => { e.preventDefault(); submitReg(pid); });
   bindAutosave(ov, key, ['f-date','f-pct','f-com']);
   const disc = $('[data-discard]', ov);
@@ -769,7 +839,7 @@ function submitReg(pid){
     modal({ tone:'ok', icon:'check', title:'Avance registrado',
       body:`<dl class="ctx"><dt>Producto</dt><dd>${esc(p.name)}</dd><dt>Avance</dt><dd>+${pctf(n)}</dd><dt>Porcentaje acumulado</dt><dd>${pctf(acum(p))}</dd><dt>Estado</dt><dd>${despues}${antes !== despues ? ` (antes: ${antes})` : ''}</dd></dl>
         <p class="muted">Si el valor no es correcto, puedes anularlo desde el historial.</p>`,
-      actions:[ { label:'Ver historial', onClick:() => { go('detail', { id:p.id }); return true; } }, { label:'Aceptar', kind:'primary' } ] });
+      actions:[ { label:'Ver historial', onClick:() => { showProduct(p.id); return true; } }, { label:'Aceptar', kind:'primary' } ] });
   };
   if (n >= UMBRAL_ALTO){
     modal({ tone:'warn', icon:'alert', title:'Avance muy alto',
@@ -782,13 +852,14 @@ function submitReg(pid){
   save(); return true;
 }
 
-/* ---------- Anular (propio) ---------- */
+/* ---------- Anular (cualquier integrante) ---------- */
 function anular(hid){
   const p = S.products.find(x => x.hist.some(h => h.id === hid)); const h = p.hist.find(x => x.id === hid);
   const base = acum(p); const key = 'anular-'+hid; const dn = draftNote(key);
+  const otro = h.by !== ME;
   const ov = modal({ tone:'bad', icon:'alert', title:'Anular avance', autosave:true,
-    body:`${dn.html}<dl class="ctx"><dt>Producto</dt><dd>${esc(p.name)}</dd><dt>Avance</dt><dd>+${pctf(h.pct)} del ${fd(h.date)}</dd><dt>Porcentaje acumulado</dt><dd>${pctf(base)} → ${pctf(base - h.pct)}</dd></dl>
-      <p>El registro no se borra: queda en el historial como anulado, con tu nombre, la fecha y el motivo, y deja de sumar.</p>
+    body:`${dn.html}<dl class="ctx"><dt>Producto</dt><dd>${esc(p.name)}</dd><dt>Avance</dt><dd>+${pctf(h.pct)} del ${fd(h.date)}</dd><dt>Registrado por</dt><dd>${esc(h.by)}</dd><dt>Porcentaje acumulado</dt><dd>${pctf(base)} → ${pctf(base - h.pct)}</dd></dl>
+      <p>El registro no se borra: queda en el historial como anulado, con tu nombre, la fecha y el motivo, y deja de sumar.${otro ? ` Le avisaremos a ${esc(h.by)}.` : ''}</p>
       <div class="field"><label for="f-mot">Motivo de la anulación</label>
       <textarea id="f-mot" maxlength="250" data-def="" placeholder="Ej.: error de digitación, el valor correcto es 8%" aria-describedby="e-mot">${esc(dn.d ? dn.d['f-mot'] : '')}</textarea><span class="err" id="e-mot" hidden></span></div>`,
     actions:[ { label:'Cancelar' }, { label:'Anular avance', kind:'danger', onClick:() => {
@@ -800,37 +871,174 @@ function anular(hid){
       render();
       modal({ tone:'ok', icon:'check', title:'Avance anulado',
         body:`<dl class="ctx"><dt>Producto</dt><dd>${esc(p.name)}</dd><dt>Avance anulado</dt><dd>+${pctf(h.pct)}</dd><dt>Porcentaje acumulado</dt><dd>${pctf(acum(p))}</dd><dt>Estado</dt><dd>${despues}${antes !== despues ? ` (antes: ${antes})` : ''}</dd></dl>
-          <p>¿Quieres registrar ahora el valor correcto?</p>`,
-        actions:[ { label:'Más tarde' }, { label:'Registrar valor correcto', kind:'primary', onClick:() => { regForm(p.id, { date:h.date, comment:h.comment }); return true; } } ] });
+          ${otro ? `<p class="muted">Avisamos a ${esc(h.by)} que su avance fue anulado.</p>` : ''}
+          <p>¿Quieres registrar el avance de nuevo? El formulario se abrirá con los datos anteriores para que los corrijas.</p>`,
+        actions:[ { label:'Más tarde' }, { label:'Registrar de nuevo', kind:'primary', onClick:() => { regForm(p.id, { date:h.date, pct:String(h.pct), comment:h.comment, focusPct:true }); return true; } } ] });
       return true;
     } } ] });
   bindAutosave(ov, key, ['f-mot']);
   const disc = $('[data-discard]', ov); if (disc) disc.addEventListener('click', () => { store.del(DRAFT+key); anular(hid); });
 }
-/* ---------- Solicitar corrección (registro ajeno) ---------- */
-function corregir(hid){
-  const p = S.products.find(x => x.hist.some(h => h.id === hid)); const h = p.hist.find(x => x.id === hid);
-  const key = 'corr-'+hid; const dn = draftNote(key);
-  const ov = modal({ tone:'info', icon:'info', title:'Solicitar corrección', wide:true, autosave:true,
-    body:`${dn.html}<p>Este avance lo registró <b>${esc(h.by)}</b>, por eso no puedes anularlo. Tu solicitud llegará al administrador del sistema y quedará registrada en el historial.</p>
-      <dl class="ctx"><dt>Producto</dt><dd>${esc(p.name)}</dd><dt>Avance</dt><dd>+${pctf(h.pct)} del ${fd(h.date)}</dd><dt>Porcentaje acumulado</dt><dd>${pctf(acum(p))}</dd></dl>
-      <div class="field"><label for="f-why">¿Qué está mal?</label>
-        <textarea id="f-why" maxlength="250" data-def="" aria-describedby="e-why" placeholder="Ej.: dice que la cartilla fue entregada, pero el acumulado es 83%">${esc(dn.d ? dn.d['f-why'] : '')}</textarea><span class="err" id="e-why" hidden></span></div>
-      <div class="field"><label for="f-what">¿Qué cambio propones?</label>
-        <textarea id="f-what" maxlength="250" data-def="" aria-describedby="e-what" placeholder="Ej.: el avance correcto de este registro es 87%">${esc(dn.d ? dn.d['f-what'] : '')}</textarea><span class="err" id="e-what" hidden></span></div>`,
-    actions:[ { label:'Cancelar' }, { label:'Enviar solicitud', kind:'primary', onClick:() => {
-      const a = $('#f-why').value.trim(), b = $('#f-what').value.trim(); let f = null;
-      setErr('why', a.length < 5 ? 'Describe qué está mal (mínimo 5 caracteres).' : ''); if (a.length < 5) f = 'why';
-      setErr('what', b.length < 3 ? 'Indica el cambio que propones.' : ''); if (b.length < 3 && !f) f = 'what';
-      if (f){ $('#f-'+f).focus(); return false; }
-      h.correction = { date:REAL_TODAY, why:a, what:b }; store.del(DRAFT+key); render();
-      modal({ tone:'ok', icon:'check', title:'Solicitud de corrección enviada',
-        body:`<p>Te avisaremos cuando el administrador la resuelva. Mientras tanto, el registro queda marcado como “Corrección solicitada”.</p>`,
-        actions:[{ label:'Aceptar', kind:'primary' }] });
+
+/* ---------- Agregar producto ---------- */
+function addProduct(noDraft){
+  const key = 'nuevo-producto'; const dn = noDraft ? { d:null, html:'' } : draftNote(key); const d = dn.d || {};
+  const team = S.proj.team.map(m => m.name);
+  const opt = (list, sel, ph) => `<option value="">${ph}</option>` + list.map(x => `<option ${x===sel?'selected':''}>${esc(x)}</option>`).join('');
+  const ov = modal({ tone:'info', icon:'plus', title:'Agregar producto', wide:true, autosave:true,
+    body:`${dn.html}<form id="addf" novalidate style="display:flex;flex-direction:column;gap:1rem">
+      <div class="field"><label for="f-pname">Nombre del producto</label>
+        <input id="f-pname" type="text" maxlength="120" data-def="" placeholder="Ej.: Informe final de resultados" value="${esc(d['f-pname']||'')}" aria-describedby="e-pname"><span class="err" id="e-pname" hidden></span></div>
+      <div class="form-grid">
+        <div class="field"><label for="f-ptipo">Tipo de producto</label>
+          <select id="f-ptipo" data-def="" aria-describedby="e-ptipo">${opt(TIPOS, d['f-ptipo'], 'Elige un tipo')}</select><span class="err" id="e-ptipo" hidden></span></div>
+        <div class="field"><label for="f-presp">Responsable</label>
+          <select id="f-presp" data-def="${ME}" aria-describedby="e-presp">${opt(team, d['f-presp'] || ME, 'Elige un integrante')}</select><span class="err" id="e-presp" hidden></span></div>
+      </div>
+      <div class="field"><label for="f-pdue">Fecha de entrega esperada</label>
+        ${dateField('f-pdue', d['f-pdue'] || '', PER_INI, PER_FIN, '')}<span class="err" id="e-pdue" hidden></span></div>
+      <div class="field"><label for="f-pdesc">Descripción <span class="opt">(opcional)</span></label>
+        <textarea id="f-pdesc" maxlength="300" data-def="" placeholder="Qué se va a entregar">${esc(d['f-pdesc']||'')}</textarea></div>
+    </form>`,
+    actions:[ { label:'Cancelar' }, { label:'Agregar producto', kind:'primary', onClick:() => {
+      const v = { name:$('#f-pname').value.trim(), tipo:$('#f-ptipo').value, resp:$('#f-presp').value, due:$('#f-pdue').value, desc:$('#f-pdesc').value.trim() };
+      let first = null; const bad = (id, msg) => { setErr(id, msg); if (msg && !first) first = id; };
+      bad('pname', v.name.length < 3 ? 'Escribe el nombre del producto (mínimo 3 caracteres).' : S.products.some(p => !p.retired && p.name.toLowerCase() === v.name.toLowerCase()) ? 'Ya existe un producto activo con ese nombre.' : '');
+      bad('ptipo', !v.tipo ? 'Elige el tipo de producto.' : '');
+      bad('presp', !v.resp ? 'Elige el responsable.' : '');
+      bad('pdue', !v.due ? 'Elige la fecha de entrega esperada.' : (v.due < PER_INI || v.due > PER_FIN) ? `La fecha debe estar dentro del periodo del proyecto (${PERIODO}).` : '');
+      if (first){ $('#f-'+first).focus(); return false; }
+      const np = { id:'p'+(++pid), name:v.name, tipo:v.tipo, resp:v.resp, due:v.due, desc:v.desc, hist:[] };
+      S.products.push(np); store.del(DRAFT+key); S.params.open = 'products'; render();
+      modal({ tone:'ok', icon:'check', title:'Producto agregado',
+        body:`<dl class="ctx"><dt>Producto</dt><dd>${esc(np.name)}</dd><dt>Tipo</dt><dd>${esc(np.tipo)}</dd><dt>Responsable</dt><dd>${esc(np.resp)}</dd><dt>Entrega esperada</dt><dd>${fd(np.due)}</dd><dt>Estado</dt><dd>Sin iniciar</dd></dl>`,
+        actions:[ { label:'Aceptar' }, { label:'Registrar primer avance', kind:'primary', onClick:() => { regForm(np.id); return true; } } ] });
       return true;
     } } ] });
-  bindAutosave(ov, key, ['f-why','f-what']);
-  const disc = $('[data-discard]', ov); if (disc) disc.addEventListener('click', () => { store.del(DRAFT+key); corregir(hid); });
+  wireDate(ov, 'f-pdue');
+  bindAutosave(ov, key, ['f-pname','f-ptipo','f-presp','f-pdue','f-pdesc']);
+  const disc = $('[data-discard]', ov); if (disc) disc.addEventListener('click', () => { store.del(DRAFT+key); addProduct(true); });
+}
+
+/* ---------- Editar datos del producto ---------- */
+function editProduct(id){
+  const p = prod(id); const team = S.proj.team.map(m => m.name);
+  if (!team.includes(p.resp)) team.push(p.resp);
+  const opt = (list, sel) => list.map(x => `<option ${x===sel?'selected':''}>${esc(x)}</option>`).join('');
+  const ov = modal({ tone:'info', icon:'pencil', title:'Editar datos del producto', wide:true,
+    body:`<form novalidate style="display:flex;flex-direction:column;gap:1rem">
+      <div class="field"><label for="f-ename">Nombre del producto</label>
+        <input id="f-ename" type="text" maxlength="120" value="${esc(p.name)}" aria-describedby="e-ename"><span class="err" id="e-ename" hidden></span></div>
+      <div class="form-grid">
+        <div class="field"><label for="f-etipo">Tipo de producto</label><select id="f-etipo">${opt(TIPOS, p.tipo)}</select></div>
+        <div class="field"><label for="f-eresp">Responsable</label><select id="f-eresp">${opt(team, p.resp)}</select></div>
+      </div>
+      <div class="field"><label for="f-edue">Fecha de entrega esperada</label>
+        ${dateField('f-edue', p.due, PER_INI, PER_FIN, p.due)}<span class="err" id="e-edue" hidden></span></div>
+      <div class="field"><label for="f-edesc">Descripción <span class="opt">(opcional)</span></label>
+        <textarea id="f-edesc" maxlength="300" placeholder="Qué se va a entregar">${esc(p.desc||'')}</textarea></div>
+    </form>
+    <p class="muted">Los avances registrados no cambian.</p>`,
+    actions:[ { label:'Cancelar' }, { label:'Guardar cambios', kind:'primary', onClick:() => {
+      const v = { name:$('#f-ename').value.trim(), tipo:$('#f-etipo').value, resp:$('#f-eresp').value, due:$('#f-edue').value, desc:$('#f-edesc').value.trim() };
+      let first = null; const bad = (k, msg) => { setErr(k, msg); if (msg && !first) first = k; };
+      bad('ename', v.name.length < 3 ? 'Escribe el nombre del producto (mínimo 3 caracteres).' : S.products.some(x => x.id !== id && !x.retired && x.name.toLowerCase() === v.name.toLowerCase()) ? 'Ya existe otro producto activo con ese nombre.' : '');
+      bad('edue', !v.due ? 'Elige la fecha de entrega esperada.' : (v.due < PER_INI || v.due > PER_FIN) ? `La fecha debe estar dentro del periodo del proyecto (${PERIODO}).` : '');
+      if (first){ $('#f-'+first).focus(); return false; }
+      Object.assign(p, v); render(); toast('Datos del producto actualizados.'); return undefined;
+    } } ] });
+  wireDate(ov, 'f-edue');
+}
+
+/* ---------- Eliminar producto ---------- */
+function deleteProduct(id){
+  const p = prod(id);
+  if (!p.hist.length){
+    modal({ tone:'bad', icon:'trash', title:'Eliminar producto',
+      body:`<dl class="ctx"><dt>Producto</dt><dd>${esc(p.name)}</dd><dt>Tipo</dt><dd>${esc(p.tipo)}</dd></dl><p>Este producto no tiene avances registrados, así que se eliminará de la lista del proyecto.</p>`,
+      actions:[ { label:'Cancelar' }, { label:'Eliminar producto', kind:'danger', onClick:() => {
+        S.products = S.products.filter(x => x.id !== id); go('products'); toast(`Producto “${esc(p.name)}” eliminado.`); return true; } } ] });
+    return;
+  }
+  const key = 'retirar-'+id; const dn = draftNote(key);
+  const ov = modal({ tone:'bad', icon:'trash', title:'Eliminar producto', autosave:true,
+    body:`${dn.html}<dl class="ctx"><dt>Producto</dt><dd>${esc(p.name)}</dd><dt>Avances registrados</dt><dd>${p.hist.length}</dd><dt>Porcentaje acumulado</dt><dd>${pctf(acum(p))}</dd></dl>
+      <p>Como ya tiene avances, el producto queda en la lista como eliminado, con su historial, y deja de sumar al avance del proyecto.</p>
+      <div class="field"><label for="f-rmot">Motivo de la eliminación</label>
+      <textarea id="f-rmot" maxlength="250" data-def="" placeholder="Ej.: el financiador eliminó este producto del alcance" aria-describedby="e-rmot">${esc(dn.d ? dn.d['f-rmot'] : '')}</textarea><span class="err" id="e-rmot" hidden></span></div>`,
+    actions:[ { label:'Cancelar' }, { label:'Eliminar producto', kind:'danger', onClick:() => {
+      const r = $('#f-rmot').value.trim();
+      if (r.length < 5){ setErr('rmot', r ? 'Amplía el motivo (mínimo 5 caracteres).' : 'Escribe el motivo de la eliminación.'); $('#f-rmot').focus(); return false; }
+      p.retired = { by:ME, date:REAL_TODAY, reason:r }; store.del(DRAFT+key); render();
+      toast(`Producto “${esc(p.name)}” eliminado. Su historial se conserva.`); return undefined;
+    } } ] });
+  bindAutosave(ov, key, ['f-rmot']);
+  const disc = $('[data-discard]', ov); if (disc) disc.addEventListener('click', () => { store.del(DRAFT+key); deleteProduct(id); });
+}
+
+/* ---------- Editar secciones de la ficha ---------- */
+function editFields(sec, title, fields){
+  const ov = modal({ tone:'info', icon:'pencil', title, wide:true,
+    body:`<form novalidate style="display:flex;flex-direction:column;gap:1rem">${fields.map(f => `<div class="field"><label for="f-${f.k}">${f.label}</label>
+      ${f.area ? `<textarea id="f-${f.k}" maxlength="400" aria-describedby="e-${f.k}">${esc(S.proj[f.k])}</textarea>` : `<input id="f-${f.k}" type="text" maxlength="160" value="${esc(S.proj[f.k])}" aria-describedby="e-${f.k}">`}
+      <span class="err" id="e-${f.k}" hidden></span></div>`).join('')}</form>`,
+    actions:[ { label:'Cancelar' }, { label:'Guardar cambios', kind:'primary', onClick:() => {
+      let first = null;
+      fields.forEach(f => { const v = $('#f-'+f.k).value.trim(); const m = v.length < 3 ? `Completa el campo “${f.label}”.` : ''; setErr(f.k, m); if (m && !first) first = f.k; });
+      if (first){ $('#f-'+first).focus(); return false; }
+      fields.forEach(f => S.proj[f.k] = $('#f-'+f.k).value.trim());
+      S.params.open = sec; render(); toast(`${title.replace('Editar ','')}: cambios guardados.`); return undefined;
+    } } ] });
+}
+function editTeam(){
+  const work = S.proj.team.map(m => Object.assign({}, m));
+  const ROLES = ['Coinvestigador(a)','Asistente de investigación','Estudiante','Asesor(a) externo(a)'];
+  const ov = modal({ tone:'info', icon:'users', title:'Editar integrantes', wide:true,
+    body:`<div class="members" id="mlist"></div><span class="err" id="e-mlist" hidden></span>
+      <p class="subhead">Agregar integrante</p>
+      <div class="field"><label for="f-mname">Nombre completo</label><input id="f-mname" type="text" maxlength="80" placeholder="Ej.: Laura Méndez" aria-describedby="e-mname"><span class="err" id="e-mname" hidden></span></div>
+      <div class="form-grid">
+        <div class="field"><label for="f-mrol">Rol</label><select id="f-mrol" aria-describedby="e-mrol"><option value="">Elige un rol</option>${ROLES.map(r => `<option>${r}</option>`).join('')}</select><span class="err" id="e-mrol" hidden></span></div>
+        <div class="field"><label for="f-mded">Dedicación</label><input id="f-mded" type="text" maxlength="30" placeholder="Ej.: 10 h/semana" aria-describedby="e-mded"><span class="err" id="e-mded" hidden></span></div>
+      </div>
+      <div><button type="button" class="btn btn-secondary" id="madd">${ic('plus')}Agregar a la lista</button></div>`,
+    actions:[ { label:'Cancelar' }, { label:'Guardar cambios', kind:'primary', onClick:() => {
+      S.proj.team = work; S.params.open = 'team'; render(); toast('Integrantes actualizados.'); return undefined; } } ] });
+  const draw = () => {
+    $('#mlist', ov).innerHTML = work.map((m,i) => `<div class="member"><div class="grow"><b>${esc(m.name)}</b>${m.name===ME?' <span class="muted">(tú)</span>':''}<small>${esc(m.rol)} · ${esc(m.ded)}</small></div>
+      ${m.name===ME ? '' : `<button type="button" class="btn btn-danger-outline btn-sm" data-mdel="${i}" aria-label="Quitar a ${esc(m.name)}">Quitar</button>`}</div>`).join('');
+  };
+  draw();
+  ov.addEventListener('click', e => {
+    const b = e.target.closest('[data-mdel]'); if (!b) return;
+    const m = work[+b.dataset.mdel];
+    const n = S.products.filter(p => !p.retired && p.resp === m.name).length;
+    const em = $('#e-mlist', ov);
+    if (n){ em.innerHTML = ic('alert') + `<span>No puedes quitar a ${esc(m.name)}: es responsable de ${plural(n,'producto activo','productos activos')}. Elimina esos productos o cambia su responsable primero.</span>`; em.hidden = false; return; }
+    em.hidden = true; work.splice(+b.dataset.mdel, 1); draw();
+  });
+  $('#madd', ov).addEventListener('click', () => {
+    const name = $('#f-mname').value.trim(), rol = $('#f-mrol').value, ded = $('#f-mded').value.trim();
+    let first = null; const bad = (id, msg) => { setErr(id, msg); if (msg && !first) first = id; };
+    bad('mname', name.length < 5 ? 'Escribe el nombre completo.' : work.some(m => m.name.toLowerCase() === name.toLowerCase()) ? 'Esta persona ya está en el equipo.' : '');
+    bad('mrol', !rol ? 'Elige el rol.' : '');
+    bad('mded', !ded ? 'Escribe la dedicación.' : '');
+    if (first){ $('#f-'+first).focus(); return; }
+    work.push({ name, rol, ded }); draw();
+    ['f-mname','f-mded'].forEach(i => $('#'+i).value = ''); $('#f-mrol').value = '';
+    toast(`${esc(name)} agregado a la lista. Guarda los cambios para confirmar.`);
+  });
+}
+function requestChange(what){
+  modal({ tone:'info', icon:'lock', title:'Solicitar cambio al administrador',
+    body:`<p>${esc(what)} dependen del convenio del proyecto, por eso solo los cambia el administrador.</p>
+      <div class="field"><label for="f-req">¿Qué cambio necesitas y por qué?</label>
+      <textarea id="f-req" maxlength="300" placeholder="Ej.: ampliar el periodo hasta el 31 mar 2027 por prórroga aprobada" aria-describedby="e-req"></textarea><span class="err" id="e-req" hidden></span></div>`,
+    actions:[ { label:'Cancelar' }, { label:'Enviar solicitud', kind:'primary', onClick:() => {
+      const r = $('#f-req').value.trim();
+      if (r.length < 5){ setErr('req', 'Describe el cambio que necesitas (mínimo 5 caracteres).'); $('#f-req').focus(); return false; }
+      modal({ tone:'ok', icon:'check', title:'Solicitud enviada', body:`<p>Te avisaremos cuando el administrador la resuelva.</p>`, actions:[{ label:'Aceptar', kind:'primary' }] });
+      return true; } } ] });
 }
 
 /* ---------- Menús ---------- */
@@ -844,7 +1052,7 @@ function userPop(){
     <button class="pop-item" data-act="logout">${ic('logout')}<span>Cerrar sesión</span></button>`, 'Menú de usuario');
 }
 function navDrawer(){
-  const inProj = ['projects','ficha','products','detail'].includes(S.screen);
+  const inProj = ['projects','ficha','products'].includes(S.screen);
   drawer(`<div class="panel-head"><img src="${LOGO_C}" alt="CINDE" style="height:48px;width:auto"><button class="x" data-close="1" aria-label="Cerrar menú">${ic('x')}</button></div>
     <button class="nav-item" data-go="home" ${S.screen==='home'?'aria-current="page"':''}>${ic('home')}Inicio</button>
     ${MODULES.map(([id,t,,i]) => `<button class="nav-item" data-mod="${id}" ${(id==='projects' && inProj) || (S.screen==='module' && S.params.mod===id) ? 'aria-current="page"':''}>${ic(i)}${t}${id==='projects' && S.access!=='granted' ? chip(S.access==='none'?'muted':'warn', S.access==='none'?'Sin acceso':'En revisión', S.access==='none'?'lock':'clock') : ''}</button>`).join('')}`, 'Menú principal');
@@ -852,30 +1060,43 @@ function navDrawer(){
 
 /* ---------- Eventos ---------- */
 document.addEventListener('click', e => {
-  const t = e.target.closest('[data-go],[data-mod],[data-proj],[data-prod],[data-reg],[data-anular],[data-corr],[data-act]');
+  const t = e.target.closest('[data-go],[data-mod],[data-proj],[data-prod],[data-prodopen],[data-reg],[data-anular],[data-act]');
   if (!t) return;
   const d = t.dataset;
   if (d.reg){ e.stopPropagation(); regForm(d.reg); return; }
   if (d.anular){ anular(d.anular); return; }
-  if (d.corr){ corregir(d.corr); return; }
   if (d.go){ go(d.go); return; }
   if (d.mod){ if (d.mod === 'projects') go('projects'); else go('module', { mod:d.mod }); return; }
   if (d.proj){ if (d.proj === 'pr1') go('ficha'); else toast('En este prototipo solo está completo el proyecto “Participación comunitaria de jóvenes rurales”.'); return; }
-  if (d.prod){ go('detail', { id:d.prod }); return; }
+  if (d.prod){ toggleProduct(d.prod); return; }
+  if (d.prodopen){ showProduct(d.prodopen); return; }
   switch (d.act){
     case 'drawer': navDrawer(); break;
     case 'notif': notifPop(); break;
     case 'user': userPop(); break;
     case 'accopen': document.querySelectorAll('details.acc').forEach(x => x.open = true); break;
+    case 'pexpand': S.params.exp = S.products.map(p => p.id); render(); break;
+    case 'pcollapse': S.params.exp = []; render(); break;
     case 'accclose': document.querySelectorAll('details.acc').forEach(x => x.open = false); break;
     case 'info': { const open = t.getAttribute('aria-expanded') === 'true'; t.setAttribute('aria-expanded', String(!open)); break; }
     case 'export': toast('Se generaría un archivo Excel con la lista de proyectos.'); break;
-    case 'addprod': toast('Agregar producto no está incluido en este prototipo.'); break;
+    case 'addprod': addProduct(); break;
+    case 'delprod': deleteProduct(d.id); break;
+    case 'editprod': editProduct(d.id); break;
+    case 'reqchange': requestChange(d.what); break;
+    case 'edit-general': editFields('general','Editar información general',[{k:'objetivo',label:'Objetivo',area:true},{k:'impacto',label:'Impacto esperado',area:true}]); break;
+    case 'edit-groups': editFields('groups','Editar grupos de investigación',[{k:'grupo',label:'Grupo principal'},{k:'linea',label:'Línea'}]); break;
+    case 'edit-orgs': editFields('orgs','Editar organizaciones beneficiarias',[{k:'orgs',label:'Organizaciones'},{k:'poblacion',label:'Población'}]); break;
+    case 'edit-team': editTeam(); break;
     case 'logout': closeLayer(); toast('En el sistema real aquí se cerraría la sesión.'); break;
   }
 });
 document.addEventListener('click', e => { if (!e.target.closest('.info-wrap')) document.querySelectorAll('.info-btn[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded','false')); }, true);
 document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.info-btn[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded','false')); });
+['input','change'].forEach(ev => document.addEventListener(ev, e => {
+  const f = e.target; if (!f.id || f.getAttribute('aria-invalid') !== 'true') return;
+  setErr(f.id.replace(/^f-/, ''), '');
+}));
 document.addEventListener('input', e => {
   const t = e.target; if (t.id !== 'qproj' && t.id !== 'qprod') return;
   S.params.q = t.value; const pos = t.selectionStart, id = t.id;
